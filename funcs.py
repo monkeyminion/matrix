@@ -14,6 +14,7 @@ def make_frac(matrix):
 def make_first_one(matrix,row,divnum):
     '''Make the first digit of a row 1 ('1/1')'''  #---
     # Note: divnum is a String
+    print('make_first_one')
     for a in range(len(matrix[row])):
         try:
             matrix[row][a] = fo.divtwofrac(matrix[row][a],divnum)
@@ -31,6 +32,7 @@ def swap(matrix,r1,r2):
 
 def scale_subtract(matrix,r1,scale,r2):
     '''Multiply r1 by scale, then subtract r2. Put back in r2'''
+    print('scale subtract')
     matrix[r2] = [fo.addfrac(fo.multtwofrac(b,scale),matrix[r2][a],add=False)
                   for a,b in enumerate(matrix[r1])]
 
@@ -60,6 +62,7 @@ def reduce_matrix(matrix):
             matrix[rownum][col] = fo.reduce(item)
 
 def cleanans(matrix):
+    print('cleanans')
     for rownum, rowlist in enumerate(matrix):
         for col,item in enumerate(rowlist):
             denom = int(item[item.find('/')+1::])

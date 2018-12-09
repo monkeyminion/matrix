@@ -8,6 +8,7 @@ import funcs as f
 
 class GaussJordan_Eliminate():
     def __init__(self,matrix,inverse=False):
+        print('gj elim init')
         self.matrix = matrix
         if inverse is True:
             self.matrix[0] += [1,0,0]
