@@ -1,4 +1,20 @@
+import time
+def timeit(func): ## times a function
+    def callfunc(*args,**kwargs):
+        initial_time = time.process_time()
+        func(*args,**kwargs)
+        end_time = time.process_time()
+        return end_time - initial_time
+    return callfunc
+def test(timed_func):
+    time = dict() # dict of n: time taken
+    for n in range(500):
+        time[n] = timed_func(n)
+    for n,times in time.items():
+        print(n,times)
+    
 ####  ADD FRACTION  ###
+@timeit
 def get_factors(number=0) -> set:
     try:
         return {a for a in list(range(1,number+1)) for b in list(
@@ -6,7 +22,7 @@ def get_factors(number=0) -> set:
     except Exception as e:
         print(f'Error : {e}')
         return {}
-
+test(get_factors)
 def neg(num) -> str:
     '''Calculates sign +/- of num, then returns sign''' #---
     minus = num.count('-')
@@ -66,6 +82,7 @@ def divtwofrac(num,divnum):
 
 def reduce(fracnum):
     '''Reduce a fraction'''  #---
+    print('reduce')
     sign = neg(fracnum)
     str_lst = fracnum.replace("-","").split("/")
     numer = int(str_lst[0])
@@ -85,4 +102,4 @@ def multtwofrac(num,multnum):
     frac = str(nnumer*mnumer)+'/'+ str(ndenom*mdenom)
     return reduce(frac)
 
-print(addfrac('8/3','1/5',add=False))
+#print(addfrac('8/3','1/5',add=False))
