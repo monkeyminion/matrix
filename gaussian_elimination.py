@@ -29,7 +29,7 @@ class Gauss_Eliminate():
                 for i in range(r,self.rows):
                     if self.matrix[i][r] == '1/1':
                         print('ge line 31 AssertionError')
-                        f.swap(self.matrix,r,i)
+                        f.swap(self.matrix,r,i) # TODO: ADD break
                 try:
                     assert self.matrix[r][r] == '1/1'
                     print('ge assertion line 35 ')
@@ -37,7 +37,7 @@ class Gauss_Eliminate():
                     print('ge line 37 AssertionError')
                     if self.matrix[r][r] == '0/1':
                         print('AE line 39 is_zero')
-                        f.is_zero(self.matrix,r,self.rows,r) #ERROR
+                        f.is_zero(self.matrix,r,self.rows - 1,r) 
                     else:
                         print('AE line 42 make_first_one')
                         f.make_first_one(self.matrix,r,self.matrix[r][r])
@@ -63,4 +63,15 @@ class Gauss_Eliminate():
 
     def get_matrix(self):
         return self.core()
-Gauss_Eliminate([[1,2,-2,2,-1,3,0],[2,-1,3,1,-3,2,17],[1,3,-2,1,-2,-3,-5],[3,-2,1,-1,3,-2,-1],[-1,-2,1,2,-2,3,10],[1,-3,1,3,-2,1,11]],6,6)
+# PASS test cases: https://www.matesfacil.com/english/high/solving-systems-by-Gaussian-Elimination.html
+# Gauss_Eliminate([[5,2,3],[-3,3,15]],2,2)
+# Gauss_Eliminate([[3,-1,2],[-6,2,-4]],2,2)
+# Gauss_Eliminate([[-5,1,0],[1,'-1/5',-3]],2,2)
+# Gauss_Eliminate([[5,2,0,2],[2,1,-1,0],[2,3,-1,3]],3,3)
+# Gauss_Eliminate([[2,-1,3,5],[2,2,3,7],[-2,3,0,-3]],3,3)
+# Gauss_Eliminate([[1,2,3,1],[-3,-2,-1,2],[4,4,4,3]],3,3)
+
+# FAIL
+# Gauss_Eliminate([[3,-1,7,1],[5,0,1,2]],2,3) System 7
+# System 8 skip, cannot handle sqrts yet
+Gauss_Eliminate([[1,2,-3,-1,0],[0,-3,2,6,-8],[-3,-1,3,1,0],[2,3,2,-1,-8]],4,4)

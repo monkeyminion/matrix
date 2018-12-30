@@ -45,7 +45,7 @@ def is_zero(matrix,r_start,r_stop,col):  #Appears to work
     lst = list(range(r_start,r_stop+1))
     if matrix[r_start][col].replace('-','')[0] == '0':
         for i in lst[1::]:
-            if matrix[i][col][0].replace('-','')[0] == '0':
+            if matrix[i][col][0].replace('-','')[0] == '0': # If numerator is 0
                 continue
             else:
                 make_first_one(matrix,i,matrix[i][col])

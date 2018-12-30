@@ -1,4 +1,4 @@
-import time
+import time,math
 def timeit(func): ## times a function
     def callfunc(*args,**kwargs):
         initial_time = time.process_time()
@@ -14,15 +14,22 @@ def test(timed_func):
         print(n,times)
     
 ####  ADD FRACTION  ###
-@timeit
+# @timeit
+# def get_factors(number=0) -> set:
+#     try:
+#         return {a for a in list(range(1,number+1)) for b in list(
+#             range(1,number+1)) if a*b == number and a != 1}
+#     except Exception as e:
+#         print(f'Error : {e}')
+#         return {}
+# test(get_factors)
 def get_factors(number=0) -> set:
-    try:
-        return {a for a in list(range(1,number+1)) for b in list(
-            range(1,number+1)) if a*b == number and a != 1}
-    except Exception as e:
-        print(f'Error : {e}')
-        return {}
-test(get_factors)
+    factors = list()
+    for i in range(1,int(math.sqrt(abs(number)) + 1)):
+        if number % i == 0:
+            factors.append(i)
+            factors.append(int(abs(number/i)))
+    return set(factors)
 def neg(num) -> str:
     '''Calculates sign +/- of num, then returns sign''' #---
     minus = num.count('-')
@@ -66,7 +73,7 @@ def addfrac(a,b,add=True):
 ###   DIVIDE FRACTION   ### ---
 def divtwofrac(num,divnum):
     '''divide two fractions'''  #---
-    print('divtwofrac')
+    # print('divtwofrac')
     nsign,  divsign = neg(num), neg(divnum)
     ndsign = nsign+divsign
     if ndsign == '' or ndsign == '--': # both nsign & divsign are -/+
@@ -82,7 +89,7 @@ def divtwofrac(num,divnum):
 
 def reduce(fracnum):
     '''Reduce a fraction'''  #---
-    print('reduce')
+    # print('reduce')
     sign = neg(fracnum)
     str_lst = fracnum.replace("-","").split("/")
     numer = int(str_lst[0])
@@ -102,4 +109,4 @@ def multtwofrac(num,multnum):
     frac = str(nnumer*mnumer)+'/'+ str(ndenom*mdenom)
     return reduce(frac)
 
-#print(addfrac('8/3','1/5',add=False))
+# print(addfrac('8/3','1/5',add=False))

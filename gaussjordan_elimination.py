@@ -18,15 +18,18 @@ class GaussJordan_Eliminate():
         self.jordan_elim()
         
     def gauss_elim(self):
-        gauss = ge.Gauss_Eliminate(self.matrix)
+        print('rows',len(self.matrix),'cols',len(self.matrix))
+        gauss = ge.Gauss_Eliminate(self.matrix,len(self.matrix),len(self.matrix))        
         self.matrix = gauss.get_matrix()
         f.make_frac(self.matrix)
 
     def jordan_elim(self):
         try:
-            assert self.matrix[0][0] == '1/1'
-            assert self.matrix[1][1] == '1/1'
-            assert self.matrix[2][2] == '1/1'  #assert that gauss_elim worked
+            # assert self.matrix[0][0] == '1/1'
+            # assert self.matrix[1][1] == '1/1'
+            # assert self.matrix[2][2] == '1/1'  #assert that gauss_elim worked
+            for i in range(len(self.matrix)):
+                assert self.matrix[i][i] == '1/1'
         except AssertionError:
             print('AssertionError')
             print(self.matrix)
@@ -53,4 +56,5 @@ class GaussJordan_Eliminate():
         print('-----------')
         f.ans(self.matrix)
 print('hi')
-GaussJordan_Eliminate([[2,-1,0],[-1,2,-1],[0,-1,2]],inverse=True)
+# GaussJordan_Eliminate([[2,-1,0],[-1,2,-1],[0,-1,2]],inverse=True)
+GaussJordan_Eliminate([[1,5,7],[-2,-7,-5]])
