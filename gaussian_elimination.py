@@ -29,7 +29,8 @@ class Gauss_Eliminate():
                 for i in range(r,self.rows):
                     if self.matrix[i][r] == '1/1':
                         print('ge line 31 AssertionError')
-                        f.swap(self.matrix,r,i) # TODO: ADD break
+                        f.swap(self.matrix,r,i)
+                        break
                 try:
                     assert self.matrix[r][r] == '1/1'
                     print('ge assertion line 35 ')
@@ -70,8 +71,8 @@ class Gauss_Eliminate():
 # Gauss_Eliminate([[5,2,0,2],[2,1,-1,0],[2,3,-1,3]],3,3)
 # Gauss_Eliminate([[2,-1,3,5],[2,2,3,7],[-2,3,0,-3]],3,3)
 # Gauss_Eliminate([[1,2,3,1],[-3,-2,-1,2],[4,4,4,3]],3,3)
-
-# FAIL
-# Gauss_Eliminate([[3,-1,7,1],[5,0,1,2]],2,3) System 7
+# Gauss_Eliminate([[1,2,-3,-1,0],[0,-3,2,6,-8],[-3,-1,3,1,0],[2,3,2,-1,-8]],4,4)
+   
+# PASS
+Gauss_Eliminate([[3,-1,7,1],[5,0,1,2]],2,3)# System 7
 # System 8 skip, cannot handle sqrts yet
-Gauss_Eliminate([[1,2,-3,-1,0],[0,-3,2,6,-8],[-3,-1,3,1,0],[2,3,2,-1,-8]],4,4)
