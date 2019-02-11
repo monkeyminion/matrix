@@ -17,6 +17,7 @@ def test(timed_func):
 # @timeit
 # def get_factors(number=0) -> set:
 #     try:
+#         print(number)
 #         return {a for a in list(range(1,number+1)) for b in list(
 #             range(1,number+1)) if a*b == number and a != 1}
 #     except Exception as e:
@@ -24,6 +25,7 @@ def test(timed_func):
 #         return {}
 # test(get_factors)
 def get_factors(number=0) -> set:
+    print(number)
     factors = list()
     for i in range(1,int(math.sqrt(abs(number)) + 1)):
         if number % i == 0:

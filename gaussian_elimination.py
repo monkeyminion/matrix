@@ -12,47 +12,47 @@ import funcs as f
 from funcs import *
 class Gauss_Eliminate():
     def __init__(self,matrix,rows,cols):
-        print('ge init')
+        # print('ge init')
         self.matrix = matrix
         self.rows = rows
         self.cols = cols
         m = self.core()
-        print('hello')
+        # print('hello')
     def core(self):
-        print('core!')
+        # print('core!')
         f.make_frac(self.matrix)
         for r in range(self.rows):
             try:
                 assert self.matrix[r][r] == '1/1'
-                print('ge assertion line 27')
+                # print('ge assertion line 27')
             except AssertionError:   # pivot is NOT 1
                 for i in range(r,self.rows):
                     if self.matrix[i][r] == '1/1':
-                        print('ge line 31 AssertionError')
+                        # print('ge line 31 AssertionError')
                         f.swap(self.matrix,r,i)
                         break
                 try:
                     assert self.matrix[r][r] == '1/1'
-                    print('ge assertion line 35 ')
+                    # print('ge assertion line 35 ')
                 except AssertionError:   # pivot is not 1 and neither are any nums in the same col
-                    print('ge line 37 AssertionError')
+                    # print('ge line 37 AssertionError')
                     if self.matrix[r][r] == '0/1':
-                        print('AE line 39 is_zero')
+                        # print('AE line 39 is_zero')
                         f.is_zero(self.matrix,r,self.rows - 1,r) 
                     else:
-                        print('AE line 42 make_first_one')
+                        # print('AE line 42 make_first_one')
                         f.make_first_one(self.matrix,r,self.matrix[r][r])
                 finally:
-                    print('AssertionError handled, line 45 reduce_matrix')
+                    # print('AssertionError handled, line 45 reduce_matrix')
                     f.reduce_matrix(self.matrix)
             finally:
-                print('ge finally corresponds to line 27 assert')
-                print('ge iter ',r)
+                # print('ge finally corresponds to line 27 assert')
+                # print('ge iter ',r)
                 for i in range(r+1,self.rows):
                     if self.matrix[i][r] != '0/1':
-                        print('line 52 scale_subtract')
+                        # print('line 52 scale_subtract')
                         f.scale_subtract(self.matrix,r,self.matrix[i][r],i)
-                print('iter',r,'reduce matrix')
+                # print('iter',r,'reduce matrix')
                 f.reduce_matrix(self.matrix)
 
         print(self.matrix)
@@ -76,3 +76,4 @@ class Gauss_Eliminate():
 # PASS
 Gauss_Eliminate([[3,-1,7,1],[5,0,1,2]],2,3)# System 7
 # System 8 skip, cannot handle sqrts yet
+
