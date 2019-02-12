@@ -4,7 +4,6 @@ class Number:
         pass
     
     def get_factors(self,number=0) -> set:
-        print(number)
         factors = list()
         for i in range(1,int(math.sqrt(abs(number)) + 1)):
             if number % i == 0:
