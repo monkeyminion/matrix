@@ -23,7 +23,7 @@ class GaussJordan_Eliminate(gauss):
         for row in range(self.rows):
             if not (self.matrix.compare_frac(row,row,1) or \
             self.matrix.compare_frac(row,row,0)):
-                raise GaussFailedException
+                raise exceptions.GaussFailedException
         # for all non-pivots, make them 0
         for row in range(self.rows):
             for col in range(row + 1,self.cols):
